@@ -1,0 +1,24 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="using:PZ17_MVVM.ViewModels"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PZ17_MVVM.Views.TrainerWindowView"
+        x:DataType="vm:TrainerWindowViewModel"
+        Icon="/Assets/trainer.ico"
+        Title="TrainerWindowView">
+    <Design.DataContext>
+        <vm:TrainerWindowViewModel/>
+    </Design.DataContext>
+    <Grid>
+        <DataGrid Name="TrainerDataGrid" x:CompileBindings="False" ItemsSource="{Binding Trainers}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding TrainerId}"></DataGridTextColumn>
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
