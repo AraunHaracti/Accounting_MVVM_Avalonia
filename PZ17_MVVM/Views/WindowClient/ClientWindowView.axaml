@@ -21,7 +21,6 @@
                   ItemsSource="{Binding Clients}"
                   SelectedItem="{Binding CurrentItem}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ClientId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PZ17_MVVM.Models;
 
-public partial class Client
+public class Client
 {
     public int ClientId { get; set; }
 
@@ -14,6 +13,4 @@ public partial class Client
     public string? LastName { get; set; }
 
     public DateTime Dob { get; set; }
-
-    public virtual ICollection<Accounting> Accountings { get; set; } = new List<Accounting>();
 }

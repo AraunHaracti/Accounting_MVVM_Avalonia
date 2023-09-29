@@ -20,10 +20,7 @@
                           IsReadOnly="True" 
                           ItemsSource="{Binding Accountings}">
                         <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding AccountingId}" Width="*"></DataGridTextColumn>
-                                <DataGridTextColumn Header="TrainerID" Binding="{Binding TrainerId}" Width="*"></DataGridTextColumn>
                                 <DataGridTextColumn Header="TrainerName" Binding="{Binding TrainerName}" Width="*"></DataGridTextColumn>
-                                <DataGridTextColumn Header="ClientID" Binding="{Binding ClientId}" Width="*"></DataGridTextColumn>
                                 <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}" Width="*"></DataGridTextColumn>
                                 <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" Width="*"></DataGridTextColumn>
                                 <DataGridTextColumn Header="CountClasses" Binding="{Binding CountClasses}" Width="*"></DataGridTextColumn>
