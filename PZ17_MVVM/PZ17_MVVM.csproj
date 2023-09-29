@@ -11,6 +11,7 @@
     <ItemGroup>
         <Folder Include="Models\" />
         <AvaloniaResource Include="Assets\**" />
+        <Folder Include="Views\WindowTrainer\Dialogs" />
     </ItemGroup>
 
 
@@ -29,5 +30,33 @@
         </PackageReference>
         <PackageReference Include="MySql.Data" Version="8.1.0" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Compile Update="Views\WindowClient\ClientWindowView.axaml.cs">
+        <DependentUpon>ClientWindowView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\WindowTrainer\TrainerWindowView.axaml.cs">
+        <DependentUpon>TrainerWindowView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\WindowAccounting\AccountingWindowView.axaml.cs">
+        <DependentUpon>AccountingWindowView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\Dialogs\ClientAddWindowView.axaml" />
+      <UpToDateCheckInput Remove="Views\Dialogs\ClientEditWindowView.axaml" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\WindowClient\Dialogs\ClientAddWindowView.axaml" />
+      <AdditionalFiles Include="Views\WindowClient\Dialogs\ClientEditWindowView.axaml" />
     </ItemGroup>
 </Project>

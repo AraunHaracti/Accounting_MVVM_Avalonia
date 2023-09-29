@@ -15,17 +15,25 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PZ17_MVVM
 build_property.ProjectDir = C:\Users\Timofey\Desktop\Reps\C_sharp\PZ17_MVVM\PZ17_MVVM\
 
+[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/WindowClient/Dialogs/ClientAddWindowView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/WindowClient/Dialogs/ClientEditWindowView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/App.axaml]
-build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
-
-[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/AccountingWindowView.axaml]
-build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
-
-[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/ClientWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/TrainerWindowView.axaml]
+[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/WindowAccounting/AccountingWindowView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/WindowClient/ClientWindowView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Timofey/Desktop/Reps/C_sharp/PZ17_MVVM/PZ17_MVVM/Views/WindowTrainer/TrainerWindowView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="PZ17_MVVM.Views.ClientWindowView"
+        x:Class="PZ17_MVVM.Views.WindowClient.ClientWindowView"
         x:DataType="vm:ClientWindowViewModel"
         Icon="/Assets/client.ico"
         Title="ClientWindowView">
@@ -12,15 +12,25 @@
         <vm:ClientWindowViewModel/>
     </Design.DataContext>
     
-    <Grid>
-        <DataGrid Name="ClientDataGrid" x:CompileBindings="False"  ItemsSource="{Binding Clients}">
+    <StackPanel>
+        <TextBox x:Name="SearchTextBox" Text="{Binding SearchQuery, Mode=TwoWay}"></TextBox>
+        <DataGrid x:Name="ClientDataGrid" 
+                  x:CompileBindings="False" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  ItemsSource="{Binding Clients}"
+                  SelectedItem="{Binding CurrentItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ClientId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Dob}"></DataGridTextColumn>
+                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Dob, StringFormat=d}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-    </Grid>
+        <Button x:Name="Add" Content="Добавить" Command="{Binding AddClient}"></Button>
+        <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteClient}"></Button>
+        <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditClient}"></Button>
+        <Button x:Name="Update" Content="Обновить" Command="{Binding UpdateClient}"></Button>
+    </StackPanel>
 </Window>

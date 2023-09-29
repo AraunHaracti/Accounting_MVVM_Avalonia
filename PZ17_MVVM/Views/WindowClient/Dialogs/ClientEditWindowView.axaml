@@ -1,0 +1,32 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:models="using:PZ17_MVVM.Models"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PZ17_MVVM.Views.WindowClient.Dialogs.ClientEditWindowView"
+        x:DataType="models:Client"
+        Title="ClientEditWindowView">
+  <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="First Name"/>
+      <TextBox Text="{Binding FirstName}"></TextBox>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="Middle Name"/>
+      <TextBox Text="{Binding MiddleName}"></TextBox>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="Last Name"/>
+      <TextBox Text="{Binding LastName}"></TextBox>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="Birthday"/>
+      <CalendarDatePicker SelectedDate="{Binding Dob}"></CalendarDatePicker>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <Button x:Name="Edit" Content="Изменить" Click="Edit_OnClick"/>
+      <Button x:Name="Cancel" Content="Отмена" Click="Cancel_OnClick"/>
+    </StackPanel>
+  </StackPanel>
+</Window>

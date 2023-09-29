@@ -1,6 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using PZ17_MVVM.ViewModels;
+using PZ17_MVVM.Views.WindowAccounting;
+using PZ17_MVVM.Views.WindowClient;
+using PZ17_MVVM.Views.WindowTrainer;
 
 namespace PZ17_MVVM.Views;
 

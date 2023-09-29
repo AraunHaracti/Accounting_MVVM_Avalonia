@@ -1,0 +1,33 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PZ17_MVVM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PZ17_MVVM.Views.WindowAccounting.AccountingWindowView"
+        x:DataType="vm:AccountingWindowViewModel"
+        Icon="/Assets/accounting.ico"
+        Title="AccountingWindowView">
+        <Design.DataContext>
+                <vm:AccountingWindowViewModel/>
+        </Design.DataContext>
+
+        <StackPanel>
+                <TextBox x:Name="SearchTextBox"></TextBox>
+                <DataGrid x:Name="AccountingDataGrid" 
+                          x:CompileBindings="False" 
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True" 
+                          ItemsSource="{Binding Accountings}">
+                        <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding AccountingId}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="TrainerID" Binding="{Binding TrainerId}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="TrainerName" Binding="{Binding TrainerName}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="ClientID" Binding="{Binding ClientId}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="StartDate" Binding="{Binding StartDate}" Width="*"></DataGridTextColumn>
+                                <DataGridTextColumn Header="CountClasses" Binding="{Binding CountClasses}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                </DataGrid>
+        </StackPanel>
+</Window>
