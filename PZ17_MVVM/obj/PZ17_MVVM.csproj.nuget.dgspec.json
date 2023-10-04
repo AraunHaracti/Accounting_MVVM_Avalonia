@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\PZ17_MVVM.csproj": {}
+    "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\PZ17_MVVM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\PZ17_MVVM.csproj": {
+    "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\PZ17_MVVM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\PZ17_MVVM.csproj",
+        "projectUniqueName": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\PZ17_MVVM.csproj",
         "projectName": "PZ17_MVVM",
-        "projectPath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\PZ17_MVVM.csproj",
+        "projectPath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\PZ17_MVVM.csproj",
         "packagesPath": "C:\\Users\\Timofey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\obj\\",
+        "outputPath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Timofey\\AppData\\Roaming\\NuGet\\NuGet.Config"

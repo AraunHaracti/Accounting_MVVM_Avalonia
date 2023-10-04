@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IM6HYx2vvjSjKWQZ0QCfbPMp4e8+PJyEaLm0Lb6Q2U6ofyleTNbXtARK3loBblHUTfpBBgQ2pFxNl6NMEGavVg==",
+  "dgSpecHash": "Q1MwVIrZE0IpYKzWu+oEAcc8z+9KnQSRmAVgbLcTEAYntV+likDRELu5y7/yATEf17xxXQrWCSq4uK9fa3By0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\PZ17_MVVM\\PZ17_MVVM\\PZ17_MVVM.csproj",
+  "projectFilePath": "C:\\Users\\Timofey\\Desktop\\Reps\\C_sharp\\Accounting_MVVM_Avalonia\\PZ17_MVVM\\PZ17_MVVM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Timofey\\.nuget\\packages\\avalonia\\11.0.2\\avalonia.11.0.2.nupkg.sha512",
     "C:\\Users\\Timofey\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.0.2023020321\\avalonia.angle.windows.natives.2.1.0.2023020321.nupkg.sha512",
