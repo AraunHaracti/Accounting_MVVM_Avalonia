@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PZ17_MVVM.Models;
 
@@ -13,7 +12,7 @@ public partial class Accounting
     public int ClientId { get; set; }
     public string ClientName { get; set; }
 
-    public DateOnly StartDate { get; set; }
+    public DateTime StartDate { get; set; }
 
     public int CountClasses { get; set; }
 

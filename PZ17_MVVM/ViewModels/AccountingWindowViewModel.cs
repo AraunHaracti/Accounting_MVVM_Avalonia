@@ -13,8 +13,13 @@ public class AccountingWindowViewModel
     
     public AccountingWindowViewModel()
     {
-        string sql =
-            "select a.AccountingID as AccountingID, a.TrainerID, a.ClientID, concat(t.FirstName, ' ', t.MiddleName, ' ', t.LastName) as TrainerName, concat(c.FirstName, ' ', c.MiddleName, ' ', c.LastName) as ClientName, a.StartDate, a.CountClasses from pz17.trainer t join pz17.accounting a on t.TrainerID = a.TrainerID join pz17.client c on a.ClientID  = c.ClientID ";
+        string sql = "select a.AccountingID as AccountingID, a.TrainerID, a.ClientID, " +
+                     "concat(t.FirstName, ' ', t.MiddleName, ' ', t.LastName) as TrainerName, " +
+                     "concat(c.FirstName, ' ', c.MiddleName, ' ', c.LastName) as ClientName, " +
+                     "a.StartDate, a.CountClasses " +
+                     "from pz17.trainer t " +
+                     "join pz17.accounting a on t.TrainerID = a.TrainerID " +
+                     "join pz17.client c on a.ClientID  = c.ClientID ";
 
         _accountings = new List<Accounting>();
 
@@ -31,7 +36,7 @@ public class AccountingWindowViewModel
                 TrainerName = reader.GetString("TrainerName"),
                 ClientId = reader.GetInt32("ClientId"),
                 ClientName = reader.GetString("ClientName"),
-                StartDate = reader.GetDateOnly("StartDate"),
+                StartDate = reader.GetDateTime("StartDate"),
                 CountClasses = reader.GetInt32("CountClasses")
             };
             

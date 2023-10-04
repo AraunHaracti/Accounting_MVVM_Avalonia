@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using PZ17_MVVM.ViewModels;
 
-namespace PZ17_MVVM.Views;
+namespace PZ17_MVVM.Views.WindowTrainer;
 
 public partial class TrainerWindowView : Window
 {

@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using PZ17_MVVM.ViewModels;
 
-namespace PZ17_MVVM.Views;
+namespace PZ17_MVVM.Views.WindowClient;
 
 public partial class ClientWindowView : Window
 {
@@ -14,7 +14,7 @@ public partial class ClientWindowView : Window
         this.AttachDevTools();
 #endif
 
-        DataContext = new ClientWindowViewModel();
+        DataContext = new ClientWindowViewModel(this);
     }
 
     private void InitializeComponent()

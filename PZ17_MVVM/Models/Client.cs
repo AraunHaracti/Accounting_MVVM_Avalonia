@@ -13,7 +13,7 @@ public partial class Client
 
     public string? LastName { get; set; }
 
-    public DateOnly Dob { get; set; }
+    public DateTime Dob { get; set; }
 
     public virtual ICollection<Accounting> Accountings { get; set; } = new List<Accounting>();
 }
