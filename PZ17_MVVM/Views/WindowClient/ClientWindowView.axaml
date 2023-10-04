@@ -13,13 +13,26 @@
     </Design.DataContext>
     
     <StackPanel>
-        <TextBox x:Name="SearchTextBox" Text="{Binding SearchQuery, Mode=TwoWay}"></TextBox>
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="SearchTextBox" Text="{Binding SearchQuery, Mode=TwoWay}"/>
+            <Button x:Name="Add" Content="Добавить" Command="{Binding AddClient}"/>
+            <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteClient}"/>
+            <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditClient}"/>
+            <Button x:Name="Update" Content="Обновить" Command="{Binding UpdateClient}"/>
+            
+            <Button x:Name="First" Content="F" Command="{Binding TakeFirstClient}"/>
+            <Button x:Name="Previous" Content="P" Command="{Binding TakePreviousClient}"/>
+            <Button x:Name="Next" Content="N" Command="{Binding TakeNextClient}"/>
+            <Button x:Name="Last" Content="L" Command="{Binding TakeLastClient}"/>
+
+        </StackPanel>
         <DataGrid x:Name="ClientDataGrid" 
                   x:CompileBindings="False" 
                   AutoGenerateColumns="False" 
                   IsReadOnly="True" 
-                  ItemsSource="{Binding Clients}"
-                  SelectedItem="{Binding CurrentItem}">
+                  ItemsSource="{Binding ClientsOnDataGrid}"
+                  SelectedItem="{Binding CurrentItem}"
+                  Height="400">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
@@ -27,9 +40,5 @@
                 <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Dob, StringFormat=d}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Add" Content="Добавить" Command="{Binding AddClient}"></Button>
-        <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteClient}"></Button>
-        <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditClient}"></Button>
-        <Button x:Name="Update" Content="Обновить" Command="{Binding UpdateClient}"></Button>
     </StackPanel>
 </Window>
