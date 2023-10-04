@@ -12,24 +12,30 @@ namespace PZ17_MVVM.ViewModels;
 
 public class ClientWindowViewModel : ViewModelBase
 {
-    private Window owner;
-    public ObservableCollection<Client> Clients
+    private readonly Window _parentWindow;
+    
+    private List<Client> _clientsFromDatabase;
+
+    private List<Client> _clientsFilter;
+    
+    private ObservableCollection<Client> _clientsOnDataGrid;
+    
+    private string _searchQuery = "";
+    
+    private int _indexTake = 0;
+    
+    public Client CurrentItem { get; set; }
+    
+    public ObservableCollection<Client> ClientsOnDataGrid
     {
-        get => _clients1;
+        get => _clientsOnDataGrid;
         set
         {
-            _clients1 = value;
-            this.RaisePropertyChanged(nameof(Clients));
+            _clientsOnDataGrid = value;
+            this.RaisePropertyChanged(nameof(ClientsOnDataGrid));
         }
     }
     
-    public Client CurrentItem { get; set; }
-
-    private List<Client> _clients;
-
-    private string _searchQuery = "";
-    private ObservableCollection<Client> _clients1;
-
     public string SearchQuery
     {
         get => _searchQuery;
@@ -39,42 +45,38 @@ public class ClientWindowViewModel : ViewModelBase
             this.RaisePropertyChanged();
         }
     }
-
-    public void DeleteClient()
-    {
-        string sql = $"delete from pz17.client c where c.ClientID = '{CurrentItem.ClientId}'";
-        Database.Open();
-        Database.SetData(sql);
-        Database.Exit();
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
-    }
-
-    public void EditClient(Window window)
-    {
-        ClientEditWindowView cewv = new ClientEditWindowView(CurrentItem);
-        cewv.ShowDialog(owner);
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
-    }
-
-    public void UpdateClient()
-    {
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
-    }
-
-    public void AddClient()
-    { 
-        ClientAddWindowView cawv = new ClientAddWindowView();
-        cawv.ShowDialog(owner);
-    }
     
+    private int IndexTake
+    {
+        get => _indexTake;
+        set
+        {
+            _indexTake = value;
+            
+            if (_indexTake > _clientsFilter.Count - 11)
+            {
+                _indexTake = _clientsFilter.Count - 11;
+            }
+            
+            if (_indexTake < 0)
+            {
+                _indexTake = 0;
+            } 
+        }
+    }
+
     public ClientWindowViewModel(Window window)
     {
-        owner = window;
+        _parentWindow = window;
+        
         GetDataFromDatabase();
+
+        _clientsFilter = _clientsFromDatabase;
+        
+        TakeFirstClient();
+        
         PropertyChanged += OnSearchQueryChanged;
+        // PropertyChanged += UpdateDataGrid;
     }
 
     private void OnSearchQueryChanged(object? sender, PropertyChangedEventArgs e)
@@ -82,21 +84,28 @@ public class ClientWindowViewModel : ViewModelBase
         if (e.PropertyName != nameof(SearchQuery)) return;
         if (SearchQuery == "")
         {
-            Clients = new(_clients);
+            _clientsFilter = new(_clientsFromDatabase);
         }
-        Clients = new(Clients.Where(it =>
+        _clientsFilter = new(_clientsFromDatabase.Where(it =>
             it.FirstName.ToLower().Contains(SearchQuery.ToLower()) ||
-            it.MiddleName.ToLower().Contains(SearchQuery.ToLower()) ||
-            it.LastName.ToLower().Contains(SearchQuery.ToLower()))
-            );
+            it.MiddleName!.ToLower().Contains(SearchQuery.ToLower()) ||
+            it.LastName!.ToLower().Contains(SearchQuery.ToLower()))
+        );
+        
+        TakeFirstClient();
     }
 
+    // private void UpdateDataGrid(object? sender, PropertyChangedEventArgs e)
+    // {
+    //     TakeFirstClient();
+    // }
+    
     private void GetDataFromDatabase()
     {
         string sql = "select * " +
                      "from pz17.client";
         
-        _clients = new List<Client>();
+        _clientsFromDatabase = new List<Client>();
         
         Database.Open();
     
@@ -113,10 +122,91 @@ public class ClientWindowViewModel : ViewModelBase
                 Dob = reader.GetDateTime("DOB")
             };
             
-            _clients.Add(currentClient);
+            _clientsFromDatabase.Add(currentClient);
         }
         
         Database.Exit();
-        Clients = new ObservableCollection<Client>(_clients);
+    }
+    
+    public void DeleteClient()
+    {
+        if (CurrentItem == null) return;
+        string sql = $"delete from pz17.client c where c.ClientID = '{CurrentItem.ClientId}'";
+        Database.Open();
+        Database.SetData(sql);
+        Database.Exit();
+        GetDataFromDatabase();
+        this.RaisePropertyChanged();
+    }
+
+    public void EditClient(Window window)
+    {
+        if (CurrentItem == null) return;
+        ClientEditWindowView clientEditWindowView = new ClientEditWindowView(CurrentItem);
+        clientEditWindowView.ShowDialog(_parentWindow);
+        GetDataFromDatabase();
+        this.RaisePropertyChanged();
+    }
+
+    public void UpdateClient()
+    {
+        GetDataFromDatabase();
+        this.RaisePropertyChanged();
+    }
+
+    public void AddClient()
+    { 
+        ClientAddWindowView clientAddWindowView = new ClientAddWindowView();
+        clientAddWindowView.ShowDialog(_parentWindow);
+        this.RaisePropertyChanged();
+    }
+
+    public void TakeFirstClient()
+    {
+        TakeElements(TakeElementsEnum.FirstElements);
+    }
+
+    public void TakePreviousClient()
+    {
+        TakeElements(TakeElementsEnum.PreviousElements);
+    }
+
+    public void TakeNextClient()
+    {
+        TakeElements(TakeElementsEnum.NextElements);
+    }
+
+    public void TakeLastClient()
+    {
+        TakeElements(TakeElementsEnum.LastElements);
+    }
+
+    private void TakeElements(TakeElementsEnum takeElements)
+    {
+        switch (takeElements)
+        {
+            case TakeElementsEnum.FirstElements:
+                IndexTake = 0;
+                break;
+            case TakeElementsEnum.LastElements:
+                IndexTake = _clientsFilter.Count - 11;
+                break;
+            case TakeElementsEnum.NextElements:
+                IndexTake += 10;
+                break;
+            case TakeElementsEnum.PreviousElements:
+                IndexTake -= 10;
+                break;
+        }
+        
+        ClientsOnDataGrid = new ObservableCollection<Client>(_clientsFilter.GetRange(IndexTake, _clientsFilter.Count > 10 ? 10 : _clientsFilter.Count));
+    }
+    
+    private enum TakeElementsEnum
+    {
+        FirstElements,
+        PreviousElements,
+        NextElements,
+        LastElements
     }
 }

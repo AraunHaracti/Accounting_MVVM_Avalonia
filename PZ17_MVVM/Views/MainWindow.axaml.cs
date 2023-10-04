@@ -1,3 +1,5 @@
+using System;
+using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using PZ17_MVVM.Views.WindowAccounting;
@@ -29,5 +31,37 @@ public partial class MainWindow : Window
     {
         AccountingWindowView window = new AccountingWindowView();
         window.ShowDialog(this);
+    }
+
+    public void OnClockAddDataToClientsTable(object? sender, RoutedEventArgs e)
+    {
+        Database.Open();
+
+
+        for (int i = 0; i < 1000; i++)
+        {
+            string sql = $"insert into client (FirstName, MiddleName, LastName, DOB) " +
+                         $"values ('{GenerationString(10)}', '{GenerationString(10)}', '{GenerationString(10)}', '{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}')";
+        
+            Database.SetData(sql);
+
+        }
+        
+        Database.Exit();
+    }
+
+    private string GenerationString(int count)
+    {
+        Random random = new Random();
+
+        StringBuilder resultString = new StringBuilder();
+        
+        for (int i = 0; i < count; i++)
+        {
+            int randomNumber = random.Next(26);
+            resultString.Append((char)(randomNumber + 97));
+        }
+
+        return resultString.ToString();
     }
 }
