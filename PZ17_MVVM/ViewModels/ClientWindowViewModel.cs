@@ -32,7 +32,7 @@ public class ClientWindowViewModel : ViewModelBase
         set
         {
             _clientsOnDataGrid = value;
-            this.RaisePropertyChanged(nameof(ClientsOnDataGrid));
+            this.RaisePropertyChanged();
         }
     }
     
@@ -42,7 +42,7 @@ public class ClientWindowViewModel : ViewModelBase
         set
         {
             _searchQuery = value;
-            this.RaisePropertyChanged();
+            UpdateClient();
         }
     }
     
@@ -53,9 +53,9 @@ public class ClientWindowViewModel : ViewModelBase
         {
             _indexTake = value;
             
-            if (_indexTake > _clientsFilter.Count - 11)
+            if (_indexTake > _clientsFilter.Count - 10)
             {
-                _indexTake = _clientsFilter.Count - 11;
+                _indexTake = _clientsFilter.Count - 10;
             }
             
             if (_indexTake < 0)
@@ -76,12 +76,16 @@ public class ClientWindowViewModel : ViewModelBase
         TakeFirstClient();
         
         PropertyChanged += OnSearchQueryChanged;
-        // PropertyChanged += UpdateDataGrid;
     }
 
     private void OnSearchQueryChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName != nameof(SearchQuery)) return;
+        Search();
+    }
+
+    private void Search()
+    {
         if (SearchQuery == "")
         {
             _clientsFilter = new(_clientsFromDatabase);
@@ -91,14 +95,14 @@ public class ClientWindowViewModel : ViewModelBase
             it.MiddleName!.ToLower().Contains(SearchQuery.ToLower()) ||
             it.LastName!.ToLower().Contains(SearchQuery.ToLower()))
         );
-        
-        TakeFirstClient();
     }
 
-    // private void UpdateDataGrid(object? sender, PropertyChangedEventArgs e)
-    // {
-    //     TakeFirstClient();
-    // }
+    public void UpdateClient()
+    {
+        GetDataFromDatabase();
+        Search();
+        TakeElements(TakeElementsEnum.FirstElements);
+    }
     
     private void GetDataFromDatabase()
     {
@@ -128,6 +132,14 @@ public class ClientWindowViewModel : ViewModelBase
         Database.Exit();
     }
     
+    public void AddClient()
+    { 
+        ClientAddWindowView clientAddWindowView = new ClientAddWindowView(UpdateClient);
+        clientAddWindowView.ShowDialog(_parentWindow);
+        UpdateClient();
+    }
+    
+    
     public void DeleteClient()
     {
         if (CurrentItem == null) return;
@@ -135,30 +147,15 @@ public class ClientWindowViewModel : ViewModelBase
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
+        UpdateClient();
     }
 
     public void EditClient(Window window)
     {
         if (CurrentItem == null) return;
-        ClientEditWindowView clientEditWindowView = new ClientEditWindowView(CurrentItem);
+        ClientEditWindowView clientEditWindowView = new ClientEditWindowView(UpdateClient, CurrentItem);
         clientEditWindowView.ShowDialog(_parentWindow);
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
-    }
-
-    public void UpdateClient()
-    {
-        GetDataFromDatabase();
-        this.RaisePropertyChanged();
-    }
-
-    public void AddClient()
-    { 
-        ClientAddWindowView clientAddWindowView = new ClientAddWindowView();
-        clientAddWindowView.ShowDialog(_parentWindow);
-        this.RaisePropertyChanged();
+        UpdateClient();
     }
 
     public void TakeFirstClient()
@@ -189,7 +186,7 @@ public class ClientWindowViewModel : ViewModelBase
                 IndexTake = 0;
                 break;
             case TakeElementsEnum.LastElements:
-                IndexTake = _clientsFilter.Count - 11;
+                IndexTake = _clientsFilter.Count - 10;
                 break;
             case TakeElementsEnum.NextElements:
                 IndexTake += 10;

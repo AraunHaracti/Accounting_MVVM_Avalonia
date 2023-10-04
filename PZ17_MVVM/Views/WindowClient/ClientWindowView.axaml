@@ -18,7 +18,6 @@
             <Button x:Name="Add" Content="Добавить" Command="{Binding AddClient}"/>
             <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteClient}"/>
             <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditClient}"/>
-            <Button x:Name="Update" Content="Обновить" Command="{Binding UpdateClient}"/>
             
             <Button x:Name="First" Content="F" Command="{Binding TakeFirstClient}"/>
             <Button x:Name="Previous" Content="P" Command="{Binding TakePreviousClient}"/>
@@ -34,6 +33,7 @@
                   SelectedItem="{Binding CurrentItem}"
                   Height="400">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ClientId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>

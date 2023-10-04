@@ -1,4 +1,6 @@
-﻿using Avalonia;
+﻿using System;
+using System.Reactive;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -8,9 +10,10 @@ namespace PZ17_MVVM.Views.WindowClient.Dialogs;
 
 public partial class ClientAddWindowView : Window
 {
+    private Action _action;
     private Client _newClient = new Client();
     
-    public ClientAddWindowView()
+    public ClientAddWindowView(Action action)
     {
         DataContext = _newClient;
         
@@ -18,6 +21,8 @@ public partial class ClientAddWindowView : Window
 #if DEBUG
         this.AttachDevTools();
 #endif
+
+        _action += action;
     }
 
     private void InitializeComponent()
@@ -33,6 +38,8 @@ public partial class ClientAddWindowView : Window
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
+        
+        _action.Invoke();
         
         this.Close();
     }

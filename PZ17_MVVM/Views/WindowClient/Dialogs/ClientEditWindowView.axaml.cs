@@ -9,8 +9,9 @@ namespace PZ17_MVVM.Views.WindowClient.Dialogs;
 
 public partial class ClientEditWindowView : Window
 {
+    private Action _action;
     private Client resultClient;
-    public ClientEditWindowView(Client client)
+    public ClientEditWindowView(Action action, Client client)
     {
         resultClient = client;
         DataContext = resultClient;
@@ -18,7 +19,7 @@ public partial class ClientEditWindowView : Window
 #if DEBUG
         this.AttachDevTools();
 #endif
-        
+        _action += action;
     }
 
     private void InitializeComponent()
@@ -33,6 +34,9 @@ public partial class ClientEditWindowView : Window
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
+        
+        _action.Invoke();
+
         this.Close();
     }
 
