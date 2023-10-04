@@ -14,7 +14,6 @@
     <Grid>
         <DataGrid Name="TrainerDataGrid" x:CompileBindings="False" ItemsSource="{Binding Trainers}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding TrainerId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>
