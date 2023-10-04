@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Reactive;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -11,16 +9,14 @@ namespace PZ17_MVVM.Views.WindowClient.Dialogs;
 public partial class ClientAddWindowView : Window
 {
     private Action _action;
-    private Client _newClient = new Client();
+    
+    private Client _newClient = new();
     
     public ClientAddWindowView(Action action)
     {
         DataContext = _newClient;
         
         InitializeComponent();
-#if DEBUG
-        this.AttachDevTools();
-#endif
 
         _action += action;
     }
@@ -33,7 +29,8 @@ public partial class ClientAddWindowView : Window
     private void Add_OnClick(object? sender, RoutedEventArgs e)
     {
         string sql = $"insert into client (FirstName, MiddleName, LastName, DOB) " +
-                     $"values ('{_newClient.FirstName}', '{_newClient.MiddleName}', '{_newClient.LastName}', '{_newClient.Dob.ToString("yyyy-MM-dd H:mm:ss")}')";
+                     $"values ('{_newClient.FirstName}', '{_newClient.MiddleName}', '" +
+                     $"{_newClient.LastName}', '{_newClient.Dob.ToString("yyyy-MM-dd H:mm:ss")}')";
 
         Database.Open();
         Database.SetData(sql);
@@ -41,11 +38,11 @@ public partial class ClientAddWindowView : Window
         
         _action.Invoke();
         
-        this.Close();
+        Close();
     }
 
     private void Cancel_OnClick(object? sender, RoutedEventArgs e)
     {
-        this.Close();
+        Close();
     }
 }

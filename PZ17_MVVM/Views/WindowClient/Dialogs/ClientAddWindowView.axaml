@@ -1,32 +1,39 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:models="using:PZ17_MVVM.Models"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        CanResize="False"
+        SizeToContent="WidthAndHeight"
         x:Class="PZ17_MVVM.Views.WindowClient.Dialogs.ClientAddWindowView"
         x:DataType="models:Client"
-        Title="ClientAddWindowView">
-  <StackPanel Orientation="Vertical">
+        Title="Добавить клиента">
+  
+  <StackPanel Orientation="Vertical" Margin="10">
+    
     <StackPanel Orientation="Horizontal">
-      <TextBlock Text="First Name"/>
-      <TextBox Text="{Binding FirstName}"></TextBox>
+      <TextBlock Text="Имя" Width="120" Margin="10"/>
+      <TextBox Text="{Binding FirstName}" Width="200" Margin="10"/>
     </StackPanel>
+    
     <StackPanel Orientation="Horizontal">
-      <TextBlock Text="Middle Name"/>
-      <TextBox Text="{Binding MiddleName}"></TextBox>
+      <TextBlock Text="Фамилия" Width="120" Margin="10"/>
+      <TextBox Text="{Binding MiddleName}" Width="200" Margin="10"/>
     </StackPanel>
+    
     <StackPanel Orientation="Horizontal">
-      <TextBlock Text="Last Name"/>
-      <TextBox Text="{Binding LastName}"></TextBox>
+      <TextBlock Text="Отчество" Width="120" Margin="10"/>
+      <TextBox Text="{Binding LastName}" Width="200" Margin="10"/>
     </StackPanel>
+    
     <StackPanel Orientation="Horizontal">
-      <TextBlock Text="Birthday"/>
-      <CalendarDatePicker SelectedDate="{Binding Dob}"></CalendarDatePicker>
+      <TextBlock Text="Дата рождения" Width="120" Margin="10"/>
+      <CalendarDatePicker SelectedDate="{Binding Dob}" Width="200" Margin="10"/>
     </StackPanel>
+    
     <StackPanel Orientation="Horizontal">
-      <Button x:Name="Add" Content="Добавить" Click="Add_OnClick"/>
-      <Button x:Name="Cancel" Content="Отмена" Click="Cancel_OnClick"/>
+      <Button x:Name="Add" Content="Добавить" Click="Add_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
+      <Button x:Name="Cancel" Content="Отмена" Click="Cancel_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
     </StackPanel>
+    
   </StackPanel>
+  
 </Window>
