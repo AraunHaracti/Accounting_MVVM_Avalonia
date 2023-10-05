@@ -13,6 +13,8 @@
         <entry key="PZ17_MVVM/Views/MainWindow.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
         <entry key="PZ17_MVVM/Views/TrainerWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
         <entry key="PZ17_MVVM/Views/WindowAccounting/AccountingWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
+        <entry key="PZ17_MVVM/Views/WindowAccounting/Dialogs/AccountingAddWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
+        <entry key="PZ17_MVVM/Views/WindowAccounting/Dialogs/AccountingEditWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
         <entry key="PZ17_MVVM/Views/WindowClient/ClientWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
         <entry key="PZ17_MVVM/Views/WindowClient/Dialogs/ClientAddWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
         <entry key="PZ17_MVVM/Views/WindowClient/Dialogs/ClientEditWindowView.axaml" value="PZ17_MVVM/PZ17_MVVM.csproj" />
