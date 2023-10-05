@@ -19,6 +19,7 @@
             <Button x:Name="Add" Content="Добавить" Command="{Binding AddClient}" Width="150" HorizontalContentAlignment="Center"/>
             <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteClient}" Width="150" HorizontalContentAlignment="Center"/>
             <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditClient}" Width="150" HorizontalContentAlignment="Center"/>
+            <Button x:Name="Exit" Content="Вернуться" Click="Exit_OnClick" Width="150" HorizontalContentAlignment="Center"/>
         </StackPanel>
         
         <DataGrid x:Name="ClientDataGrid" 
