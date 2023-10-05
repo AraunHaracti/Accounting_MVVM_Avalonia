@@ -147,7 +147,7 @@ public class ClientWindowViewModel : ViewModelBase
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
-        UpdateClient();
+        // UpdateClient();
     }
 
     public void EditClient(Window window)
@@ -155,7 +155,7 @@ public class ClientWindowViewModel : ViewModelBase
         if (CurrentItem == null) return;
         ClientEditWindowView clientEditWindowView = new ClientEditWindowView(UpdateClient, CurrentItem);
         clientEditWindowView.ShowDialog(_parentWindow);
-        UpdateClient();
+        // UpdateClient();
     }
 
     public void TakeFirstClient()

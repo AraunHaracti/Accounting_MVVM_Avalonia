@@ -5,6 +5,7 @@
         SizeToContent="WidthAndHeight"
         x:Class="PZ17_MVVM.Views.WindowClient.Dialogs.ClientEditWindowView"
         x:DataType="models:Client"
+        Icon="/Assets/client.ico"
         Title="Редактировать клиента">
   
   <StackPanel Orientation="Vertical" Margin="10">
@@ -30,7 +31,7 @@
     </StackPanel>
     
     <StackPanel Orientation="Horizontal">
-      <Button x:Name="Add" Content="Добавить" Click="Edit_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
+      <Button x:Name="Add" Content="Изменить" Click="Edit_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
       <Button x:Name="Cancel" Content="Отмена" Click="Cancel_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
     </StackPanel>
     

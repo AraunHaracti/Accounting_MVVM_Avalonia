@@ -3,27 +3,28 @@
         xmlns:vm="using:PZ17_MVVM.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        CanResize="False"
+        SizeToContent="WidthAndHeight"
         x:Class="PZ17_MVVM.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="PZ17_MVVM">
+        Title="Тренажерный зал">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+      <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical" Margin="100">
-      <StackPanel Orientation="Vertical" Spacing="25" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Click="OnClickDisplayClients" Content="Клиенты"/>
-        <Button Click="OnClickDisplayTrainer" Content="Тренеры"/>
-        <Button Click="OnClickDisplayAccounting" Content="Проведенные процедуры"/>
+    <StackPanel Orientation="Horizontal" Margin="50">
+      <StackPanel Orientation="Vertical" Spacing="25" Margin="10">
+        <Button Click="OnClickDisplayClients" Content="Клиенты" Width="200"/>
+        <Button Click="OnClickDisplayTrainer" Content="Тренеры" Width="200"/>
+        <Button Click="OnClickDisplayAccounting" Content="Проведенные процедуры" Width="200"/>
       </StackPanel>
       
-      <StackPanel Orientation="Vertical" Margin="100">
-        <Button Content="Add Data To Clients Table" Click="OnClockAddDataToClientsTable"></Button>  
+      <StackPanel Orientation="Vertical" Spacing="25" Margin="10">
+        <Button Content="Add Data To Clients Table" Click="OnClockAddDataToClientsTable" Width="250"/>  
+        <Button Content="Add Data To Trainers Table" Click="OnClockAddDataToTrainersTable" Width="250"/>
+        <Button Content="Add Data To Accounting Table" Click="OnClockAddDataToAccountingTable" Width="250"/>
       </StackPanel>
       
     </StackPanel>

@@ -1,14 +1,12 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:PZ17_MVVM.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         CanResize="False"
         SizeToContent="WidthAndHeight"
         x:Class="PZ17_MVVM.Views.WindowClient.ClientWindowView"
         x:DataType="vm:ClientWindowViewModel"
         Icon="/Assets/client.ico"
-        Title="ClientWindowView">
+        Title="Учет клиентов">
     
     <Design.DataContext>
         <vm:ClientWindowViewModel/>
@@ -33,10 +31,10 @@
                   Margin="10">
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" Width="300"/>
-                <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}" Width="300"/>
-                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}" Width="300"/>
-                <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Dob, StringFormat=d}" Width="150"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="300"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding MiddleName}" Width="300"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}" Width="300"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Dob, StringFormat=d}" Width="150"/>
             </DataGrid.Columns>
             
         </DataGrid>

@@ -1,23 +1,51 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="using:PZ17_MVVM.ViewModels"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        CanResize="False"
+        SizeToContent="WidthAndHeight"
         x:Class="PZ17_MVVM.Views.WindowTrainer.TrainerWindowView"
         x:DataType="vm:TrainerWindowViewModel"
         Icon="/Assets/trainer.ico"
-        Title="TrainerWindowView">
+        Title="Учет тренеров">
+    
     <Design.DataContext>
         <vm:TrainerWindowViewModel/>
     </Design.DataContext>
-    <Grid>
-        <DataGrid Name="TrainerDataGrid" x:CompileBindings="False" ItemsSource="{Binding Trainers}">
+    
+    <StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBox x:Name="SearchTextBox" Text="{Binding SearchQuery, Mode=TwoWay}" Width="400"/>
+            <Button x:Name="Add" Content="Добавить" Command="{Binding AddTrainer}" Width="150" HorizontalContentAlignment="Center"/>
+            <Button x:Name="Delete" Content="Удалить" Command="{Binding DeleteTrainer}" Width="150" HorizontalContentAlignment="Center"/>
+            <Button x:Name="Edit" Content="Редактировать" Command="{Binding EditTrainer}" Width="150" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+        
+        <DataGrid x:Name="TrainerDataGrid" 
+                  x:CompileBindings="False" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  ItemsSource="{Binding TrainersOnDataGrid}"
+                  SelectedItem="{Binding CurrentItem}"
+                  Height="400"
+                  Margin="10">
+            
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="MiddleName" Binding="{Binding MiddleName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="LastName" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="300"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding MiddleName}" Width="300"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}" Width="300"/>
             </DataGrid.Columns>
+            
         </DataGrid>
-    </Grid>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
+            <Button x:Name="First" Content="&lt;&lt;" Command="{Binding TakeFirstTrainer}" Margin="5"/>
+            <Button x:Name="Previous" Content="&lt;" Command="{Binding TakePreviousTrainer}" Margin="5"/>
+            <Button x:Name="Next" Content="&gt;" Command="{Binding TakeNextTrainer}" Margin="5"/>
+            <Button x:Name="Last" Content="&gt;&gt;" Command="{Binding TakeLastTrainer}" Margin="5"/>
+        </StackPanel>
+        
+    </StackPanel>
+    
 </Window>
+

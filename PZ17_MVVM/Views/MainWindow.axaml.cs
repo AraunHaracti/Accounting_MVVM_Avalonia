@@ -37,11 +37,49 @@ public partial class MainWindow : Window
     {
         Database.Open();
 
-
         for (int i = 0; i < 1000; i++)
         {
             string sql = $"insert into client (FirstName, MiddleName, LastName, DOB) " +
-                         $"values ('{GenerationString(10)}', '{GenerationString(10)}', '{GenerationString(10)}', '{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}')";
+                         $"values ('{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}', " +
+                         $"'{DateTime.Now.ToString("yyyy-MM-dd H:mm:ss")}')";
+        
+            Database.SetData(sql);
+
+        }
+        
+        Database.Exit();
+    }
+    
+    public void OnClockAddDataToTrainersTable(object? sender, RoutedEventArgs e)
+    {
+        Database.Open();
+
+        for (int i = 0; i < 1000; i++)
+        {
+            string sql = $"insert into trainer (FirstName, MiddleName, LastName) " +
+                         $"values ('{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}')";
+        
+            Database.SetData(sql);
+
+        }
+        
+        Database.Exit();
+    }
+    
+    public void OnClockAddDataToAccountingTable(object? sender, RoutedEventArgs e)
+    {
+        Database.Open();
+
+        for (int i = 0; i < 1000; i++)
+        {
+            string sql = $"insert into trainer (FirstName, MiddleName, LastName) " +
+                         $"values ('{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}', " +
+                         $"'{GenerationString(10)}')";
         
             Database.SetData(sql);
 

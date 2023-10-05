@@ -3,10 +3,10 @@
         xmlns:models="using:PZ17_MVVM.Models"
         CanResize="False"
         SizeToContent="WidthAndHeight"
-        x:Class="PZ17_MVVM.Views.WindowClient.Dialogs.ClientAddWindowView"
-        x:DataType="models:Client"
-        Icon="/Assets/client.ico"
-        Title="Добавить клиента">
+        x:Class="PZ17_MVVM.Views.WindowTrainer.Dialogs.TrainerAddWindowView"
+        x:DataType="models:Trainer"
+        Icon="/Assets/trainer.ico"
+        Title="Добавить тренера">
   
   <StackPanel Orientation="Vertical" Margin="10">
     
@@ -23,11 +23,6 @@
     <StackPanel Orientation="Horizontal">
       <TextBlock Text="Отчество" Width="120" Margin="10"/>
       <TextBox Text="{Binding LastName}" Width="200" Margin="10"/>
-    </StackPanel>
-    
-    <StackPanel Orientation="Horizontal">
-      <TextBlock Text="Дата рождения" Width="120" Margin="10"/>
-      <CalendarDatePicker SelectedDate="{Binding Dob}" Width="200" Margin="10"/>
     </StackPanel>
     
     <StackPanel Orientation="Horizontal">

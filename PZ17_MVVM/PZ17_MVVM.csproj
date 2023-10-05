@@ -12,7 +12,6 @@
         <Folder Include="Models\" />
         <AvaloniaResource Include="Assets\**" />
         <Folder Include="Views\WindowAccounting\Dialogs" />
-        <Folder Include="Views\WindowTrainer\Dialogs" />
     </ItemGroup>
 
 

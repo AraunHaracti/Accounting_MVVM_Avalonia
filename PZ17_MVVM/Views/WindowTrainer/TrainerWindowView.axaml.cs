@@ -14,7 +14,7 @@ public partial class TrainerWindowView : Window
         this.AttachDevTools();
 #endif
 
-        DataContext = new TrainerWindowViewModel();
+        DataContext = new TrainerWindowViewModel(this);
     }
 
     private void InitializeComponent()

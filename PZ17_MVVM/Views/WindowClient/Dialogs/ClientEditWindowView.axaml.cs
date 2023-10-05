@@ -10,13 +10,13 @@ public partial class ClientEditWindowView : Window
 {
     private Action _action;
     
-    private Client resultClient;
+    private Client _resultClient;
     
     public ClientEditWindowView(Action action, Client client)
     {
-        resultClient = client;
+        _resultClient = client;
 
-        DataContext = resultClient;
+        DataContext = _resultClient;
         
         InitializeComponent();
 
@@ -31,11 +31,11 @@ public partial class ClientEditWindowView : Window
     private void Edit_OnClick(object? sender, RoutedEventArgs e)
     {
         string sql = $"update pz17.client as c set " +
-                     $"c.FirstName = '{resultClient.FirstName}', " +
-                     $"c.MiddleName = '{resultClient.MiddleName}', " +
-                     $"c.LastName = '{resultClient.LastName}', " +
-                     $"c.DOB = '{resultClient.Dob.ToString("yyyy-MM-dd H:mm:ss")}' " +
-                     $"where c.ClientID = '{resultClient.ClientId}'";
+                     $"c.FirstName = '{_resultClient.FirstName}', " +
+                     $"c.MiddleName = '{_resultClient.MiddleName}', " +
+                     $"c.LastName = '{_resultClient.LastName}', " +
+                     $"c.DOB = '{_resultClient.Dob.ToString("yyyy-MM-dd H:mm:ss")}' " +
+                     $"where c.ClientID = '{_resultClient.ClientId}'";
         
         Database.Open();
         Database.SetData(sql);
