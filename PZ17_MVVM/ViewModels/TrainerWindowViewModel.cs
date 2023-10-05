@@ -132,7 +132,7 @@ public class TrainerWindowViewModel : ViewModelBase
         Database.Exit();
     }
 
-public void AddTrainer()
+    public void AddTrainer()
     { 
         TrainerAddWindowView trainerAddWindowView = new TrainerAddWindowView(UpdateTrainer);
         trainerAddWindowView.ShowDialog(_parentWindow);
@@ -147,7 +147,7 @@ public void AddTrainer()
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
-        // UpdateTrainer();
+        UpdateTrainer();
     }
 
     public void EditTrainer(Window window)

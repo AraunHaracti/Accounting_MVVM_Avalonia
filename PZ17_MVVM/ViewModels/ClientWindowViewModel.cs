@@ -147,7 +147,7 @@ public class ClientWindowViewModel : ViewModelBase
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
-        // UpdateClient();
+        UpdateClient();
     }
 
     public void EditClient(Window window)

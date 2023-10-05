@@ -151,6 +151,7 @@ public class AccountingWindowViewModel : ViewModelBase
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
+        UpdateAccounting();
     }
 
     public void EditAccounting(Window window)
