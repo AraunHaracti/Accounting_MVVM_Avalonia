@@ -91,6 +91,7 @@ public class ClientWindowViewModel : ViewModelBase
             _clientsFilter = new(_clientsFromDatabase);
         }
         _clientsFilter = new(_clientsFromDatabase.Where(it =>
+            it.ClientId.ToString().Contains(SearchQuery.ToLower()) ||
             it.FirstName.ToLower().Contains(SearchQuery.ToLower()) ||
             it.MiddleName!.ToLower().Contains(SearchQuery.ToLower()) ||
             it.LastName!.ToLower().Contains(SearchQuery.ToLower()))
@@ -150,12 +151,11 @@ public class ClientWindowViewModel : ViewModelBase
         UpdateClient();
     }
 
-    public void EditClient(Window window)
+    public void EditClient()
     {
         if (CurrentItem == null) return;
         ClientEditWindowView clientEditWindowView = new ClientEditWindowView(UpdateClient, CurrentItem);
         clientEditWindowView.ShowDialog(_parentWindow);
-        // UpdateClient();
     }
 
     public void TakeFirstClient()

@@ -5,6 +5,7 @@ using System.Linq;
 using Avalonia.Controls;
 using MySqlConnector;
 using PZ17_MVVM.Models;
+using PZ17_MVVM.Views.WindowAccounting.Dialogs;
 using ReactiveUI;
 
 namespace PZ17_MVVM.ViewModels;
@@ -139,8 +140,8 @@ public class AccountingWindowViewModel : ViewModelBase
     
     public void AddAccounting()
     { 
-        // ClientAddWindowView clientAddWindowView = new ClientAddWindowView(UpdateClient);
-        // clientAddWindowView.ShowDialog(_parentWindow);
+        AccountingAddWindowView accountingAddWindowView = new AccountingAddWindowView(UpdateAccounting);
+        accountingAddWindowView.ShowDialog(_parentWindow);
     }
     
     
@@ -154,11 +155,11 @@ public class AccountingWindowViewModel : ViewModelBase
         UpdateAccounting();
     }
 
-    public void EditAccounting(Window window)
+    public void EditAccounting()
     {
         if (CurrentItem == null) return;
-        // ClientEditWindowView clientEditWindowView = new ClientEditWindowView(UpdateClient, CurrentItem);
-        // clientEditWindowView.ShowDialog(_parentWindow);
+        AccountingEditWindowView accountingEditWindowView = new AccountingEditWindowView(UpdateAccounting, CurrentItem);
+        accountingEditWindowView.ShowDialog(_parentWindow);
     }
 
     public void TakeFirstAccounting()

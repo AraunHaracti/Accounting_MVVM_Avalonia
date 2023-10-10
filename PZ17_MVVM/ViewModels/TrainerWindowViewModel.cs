@@ -143,19 +143,18 @@ public class TrainerWindowViewModel : ViewModelBase
     public void DeleteTrainer()
     {
         if (CurrentItem == null) return;
-        string sql = $"delete from pz17.trainer c where c.ClientID = '{CurrentItem.TrainerId}'";
+        string sql = $"delete from pz17.trainer t where t.TrainerID = '{CurrentItem.TrainerId}'";
         Database.Open();
         Database.SetData(sql);
         Database.Exit();
         UpdateTrainer();
     }
 
-    public void EditTrainer(Window window)
+    public void EditTrainer()
     {
         if (CurrentItem == null) return;
         TrainerEditWindowView trainerEditWindowView = new TrainerEditWindowView(UpdateTrainer, CurrentItem);
         trainerEditWindowView.ShowDialog(_parentWindow);
-        // UpdateTrainer();
     }
 
     public void TakeFirstTrainer()

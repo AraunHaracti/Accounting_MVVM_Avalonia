@@ -1,0 +1,40 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:PZ17_MVVM.Models"
+        CanResize="False"
+        SizeToContent="WidthAndHeight"
+        x:Class="PZ17_MVVM.Views.WindowAccounting.Dialogs.AccountingAddWindowView"
+        x:DataType="models:Accounting"
+        Icon="/Assets/accounting.ico"
+        Title="Добавить учет">
+  
+  <StackPanel Orientation="Vertical" Margin="10">
+    
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="ID Клиент" Width="120" Margin="10"/>
+      <TextBox Text="{Binding ClientId}" Width="200" Margin="10"/>
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="ID Тренер" Width="120" Margin="10"/>
+      <TextBox Text="{Binding TrainerId}" Width="200" Margin="10"/>
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="Дата начала" Width="120" Margin="10"/>
+      <CalendarDatePicker SelectedDate="{Binding StartDate}" Width="200" Margin="10"/>
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="Колв-во занятий" Width="120" Margin="10"/>
+      <TextBox Text="{Binding CountClasses}" Width="200" Margin="10"/>
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal">
+      <Button x:Name="Add" Content="Добавить" Click="Add_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
+      <Button x:Name="Cancel" Content="Отмена" Click="Cancel_OnClick" Width="160" Margin="10" HorizontalContentAlignment="Center"/>
+    </StackPanel>
+    
+  </StackPanel>
+  
+</Window>
